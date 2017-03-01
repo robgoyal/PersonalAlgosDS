@@ -5,28 +5,38 @@
 #--------------------------------#
 
 class Stack:
+	''' 
+	The stack data structure is a ordered
+	collection of items where the items 
+	can be added and only the top most 
+	element can be removed. This is a 
+	Last In First Out order. 
+	'''
 
+	# Initialize data and returns empty stack
 	def __init__(self):
 		self.data = []
-		self.len = 0
 		return self.data
 
+	# Push item onto the stack
 	def push(self, item):
 		self.data.append(item)
-		self.len = self.len + 1
 
+	# Pop and return top most item of the stack
 	def pop(self):
-		if(!(isEmpty()):
-			self.len = self.len - 1	
-			return self.data.pop(self.len)
+		return self.data.pop()
 
+	# Return top most item of the stack
 	def peek(self):
-		if !(isEmpty()):
-			return self.data[self.len - 1]
+		return self.data[size() - 1]
 
+	# Check if stack is empty
 	def isEmpty(self):
-		if self.len == 0:
+		if len(self.data) == 0:
+			return False
+		else:
 			return True
 
+	# Return the size of the stack
 	def size(self):
-		return self.len
+		return len(self.data)
