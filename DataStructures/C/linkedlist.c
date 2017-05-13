@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-// Head of llist
-typedef struct sllist
-{
-    int val;
-    struct sllist* next;
-} sllnode;
+#include "linkedlist.h"
 
 sllnode* head;
+
+int main() {
+    sllnode* new = create(6); 
+    new = insert(new, 5);
+    new = insert(new, 12);
+    printf("Node value: %i\n", new->next->next->val);
+    printf("Number exists: %i\n", find(new, 4));
+    destroy(new);
+}
 
 sllnode* create(int val) {
     sllnode *llist = malloc(sizeof(sllnode));
@@ -59,14 +62,4 @@ void destroy(sllnode* head) {
         current = next;
     }
     head->next = NULL;
-}
-
-
-int main() {
-    sllnode* new = create(6); 
-    new = insert(new, 5);
-    new = insert(new, 12);
-    printf("Node value: %i\n", new->next->next->val);
-    printf("Number exists: %i\n", find(new, 4));
-    destroy(new);
 }
