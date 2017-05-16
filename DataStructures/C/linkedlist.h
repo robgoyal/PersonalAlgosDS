@@ -1,3 +1,9 @@
+/* Name: linkedlist.h
+   Author: Robin Goyal
+   Last-Modified: May 16, 2017
+   Purpose: Defines node struct and prototypes
+*/
+
 #include <stdio.h> 
 #include <stdlib.h>
 #include <stdbool.h>
@@ -5,18 +11,22 @@
 #ifndef LINKEDLIST_H_ /* Include guard */
 #define LINKEDLIST_H_
 
-typedef struct sllist
-{
-    int val;
+// linked list structure definition
+typedef struct sllist {
+    int data;
     struct sllist* next;
-} sllnode;
+} node;
 
-sllnode* create(int val);
+// Creates an empty linked list
+node* create();
 
-sllnode* insert(sllnode* head, int val);
+// Inserts a val into the linked list
+node* insert(node* head, int val);
 
-bool find(sllnode* head, int val);
+// Determines if value exists in linked list
+bool find(node* head, int val);
 
-void destroy(sllnode* head);
+// Destroys linked list
+void destroy(node* head);
 
 #endif // LINKEDLIST_H_

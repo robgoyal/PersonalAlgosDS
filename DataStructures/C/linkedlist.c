@@ -1,65 +1,62 @@
+/* Name: linkedlist.c 
+   Author: Robin Goyal
+   Last-Modified: May 16, 2017
+   Purpose: Create a linked list data structure for personal
+            use and learning
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include "linkedlist.h"
 
-sllnode* head;
+node* head;
 
-int main() {
-    sllnode* new = create(6); 
-    new = insert(new, 5);
-    new = insert(new, 12);
-    printf("Node value: %i\n", new->next->next->val);
-    printf("Number exists: %i\n", find(new, 4));
-    destroy(new);
-}
+node* create() {
 
-sllnode* create(int val) {
-    sllnode *llist = malloc(sizeof(sllnode));
-    if (llist != NULL) {
-        llist->val = val;
-        llist->next = NULL;
-    }
+    head = NULL;
 
-    head = malloc(sizeof(sllnode));
-    if (head != NULL) {
-        head = llist;
-    }   
-
-    return llist;
-}
-
-sllnode* insert(sllnode* head, int val) {
-    sllnode* node = malloc(sizeof(sllnode));
-    node->val = val;
-    node->next = head;
-    head = node;
     return head;
 }
 
-bool find(sllnode* head, int val) {
-    sllnode* traverse = head;
-    while (traverse->next != NULL) {
-        if (traverse->val == val) {
+node* insert(node* head, int val) {
+    // Allocate memory for new node and check for failure
+    node* node = malloc(sizeof(node));
+    if (node == NULL) {
+        printf("Memory was not allocated properly. Exiting. ");
+        exit(1);
+    }
+
+    node -> data = val;   
+    node -> next = head;    // Link to head of list
+
+    head = node;            // Set head to new node
+    return head;
+}
+
+bool find(node* head, int val) {
+
+    node* current = head;
+
+    while (current -> next != NULL) {
+        if (current -> data == val) {
             return true;
         }
         else {
-            traverse = traverse->next;
+            current = current -> next;
         }
     }
     return false;
 }
 
-void destroy(sllnode* head) {
+void destroy(node* head) {
 
-    sllnode* current = malloc(sizeof(sllnode));
-    current = head;
-    sllnode* next = malloc(sizeof(sllnode));
-
-    while (current != NULL) {
-        next = current -> next;
-        free(current);
-        current = next;
+    node* current = head;
+    node* temp = NULL;
+    while (current -> next != NULL) {
+        temp = current;
+        current = current -> next;
+        free(temp);
     }
-    head->next = NULL;
+    free(current);
 }
