@@ -21,7 +21,7 @@ typedef struct sllist {
 node* create();
 
 // Inserts a val into the linked list
-node* insert(node* head, int val);
+void insert(node** head, int val);
 
 // Determines if value exists in linked list
 bool find(node* head, int val);

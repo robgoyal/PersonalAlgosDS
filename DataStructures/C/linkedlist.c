@@ -19,7 +19,7 @@ node* create() {
     return head;
 }
 
-node* insert(node* head, int val) {
+void insert(node** head, int val) {
     // Allocate memory for new node and check for failure
     node* node = malloc(sizeof(node));
     if (node == NULL) {
@@ -27,11 +27,16 @@ node* insert(node* head, int val) {
         exit(1);
     }
 
-    node -> data = val;   
-    node -> next = head;    // Link to head of list
+    if (*head == NULL) {
+        node -> next = NULL;
+    }
 
-    head = node;            // Set head to new node
-    return head;
+    else {
+        node -> next = *head;
+    }
+
+    node -> data = val;   
+    *head = node;            // Set head to new node
 }
 
 bool find(node* head, int val) {
@@ -59,4 +64,13 @@ void destroy(node* head) {
         free(temp);
     }
     free(current);
+}
+
+int main() {
+    node* new = create(); 
+    insert(&new, 3);
+    insert(&new, 16);
+    printf("Node value: %i\n", new->next->data);
+    printf("Number exists: %i\n", find(new, 3));
+    destroy(new);
 }
