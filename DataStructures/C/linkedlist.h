@@ -1,6 +1,6 @@
 /* Name: linkedlist.h
    Author: Robin Goyal
-   Last-Modified: May 16, 2017
+   Last-Modified: May 29, 2017
    Purpose: Defines node struct and prototypes
 */
 
@@ -24,9 +24,9 @@ node* create();
 void insert(node** head, int val);
 
 // Determines if value exists in linked list
-bool find(node* head, int val);
+bool find(node** head, int val);
 
 // Destroys linked list
-void destroy(node* head);
+void destroy(node** head);
 
 #endif // LINKEDLIST_H_

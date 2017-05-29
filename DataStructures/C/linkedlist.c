@@ -1,6 +1,6 @@
 /* Name: linkedlist.c 
    Author: Robin Goyal
-   Last-Modified: May 16, 2017
+   Last-Modified: May 29, 2017
    Purpose: Create a linked list data structure for personal
             use and learning
 */
@@ -10,23 +10,25 @@
 #include <stdbool.h>
 #include "linkedlist.h"
 
-node* head;
-
+// Initialize node pointer head and set to NULL
 node* create() {
-
-    head = NULL;
+    node* head = NULL;
 
     return head;
 }
 
+// Insert new element to the front of the linked list for O(1) operation
 void insert(node** head, int val) {
+
     // Allocate memory for new node and check for failure
     node* node = malloc(sizeof(node));
+
     if (node == NULL) {
         printf("Memory was not allocated properly. Exiting. ");
         exit(1);
     }
 
+    // Set new nodes next node pointer to null if list is empty
     if (*head == NULL) {
         node -> next = NULL;
     }
@@ -35,15 +37,21 @@ void insert(node** head, int val) {
         node -> next = *head;
     }
 
-    node -> data = val;   
-    *head = node;            // Set head to new node
+    // Initialize node data and set head to new node
+    node -> data = val;       
+    *head = node;
 }
 
-bool find(node* head, int val) {
+// Find val in linked list, O(n) operation
+bool find(node** head, int val) {
 
-    node* current = head;
+    // Create traversal pointer
+    node* current = *head;
 
-    while (current -> next != NULL) {
+    // Traverse through linked list until end is reached
+    while (current != NULL) {
+
+        // Check if current node data is val otherwise go to next node
         if (current -> data == val) {
             return true;
         }
@@ -51,26 +59,35 @@ bool find(node* head, int val) {
             current = current -> next;
         }
     }
+
     return false;
 }
 
-void destroy(node* head) {
+// Destroy linked list freeing all allocated memory
+void destroy(node** head) {
 
-    node* current = head;
+    // Create traversal pointer and temporary pointer
+    node* current = *head;
     node* temp = NULL;
-    while (current -> next != NULL) {
-        temp = current;
-        current = current -> next;
-        free(temp);
+
+    // Traverse through linked list until end is reached
+    while (current != NULL) {
+
+        // Free nodes iteratively
+        temp = current -> next;
+        free(current);
+        current = temp;
     }
-    free(current);
+
+    // Set caller function list pointer to NULL
+    *head = NULL;
 }
 
+// Simple test client
 int main() {
     node* new = create(); 
-    insert(&new, 3);
-    insert(&new, 16);
-    printf("Node value: %i\n", new->next->data);
-    printf("Number exists: %i\n", find(new, 3));
-    destroy(new);
+    insert(&new, 7);
+    printf("Node value: %i\n", new -> data);
+    printf("Number exists: %i\n", find(&new, 7));
+    destroy(&new);
 }
