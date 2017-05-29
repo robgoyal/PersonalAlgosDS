@@ -29,4 +29,7 @@ bool find(node** head, int val);
 // Destroys linked list
 void destroy(node** head);
 
+// Return length of linked list
+int length(node** head);
+
 #endif // LINKEDLIST_H_

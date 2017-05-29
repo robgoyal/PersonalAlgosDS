@@ -63,6 +63,23 @@ bool find(node** head, int val) {
     return false;
 }
 
+// Return length of list
+int length(node** head) {
+
+    // Create traversal pointer
+    node* current = *head;
+
+    int count = 0;
+
+    // Traverse through list until end is reached and increment count
+    while (current != NULL) {
+        count++;
+        current = current -> next;
+    }
+
+    return count;
+}
+
 // Destroy linked list freeing all allocated memory
 void destroy(node** head) {
 
