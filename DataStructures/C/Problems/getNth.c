@@ -1,3 +1,8 @@
+/* Name: getNth.c
+   Author: Robin Goyal
+   Last-Modified: May 29, 2017
+   Purpose: Returns the nth index of the linked list
+*/
 
 #include <assert.h>
 #include <stdio.h>
