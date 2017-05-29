@@ -82,12 +82,3 @@ void destroy(node** head) {
     // Set caller function list pointer to NULL
     *head = NULL;
 }
-
-// Simple test client
-int main() {
-    node* new = create(); 
-    insert(&new, 7);
-    printf("Node value: %i\n", new -> data);
-    printf("Number exists: %i\n", find(&new, 7));
-    destroy(&new);
-}
