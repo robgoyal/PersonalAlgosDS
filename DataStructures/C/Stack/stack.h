@@ -32,7 +32,7 @@ bool isEmpty(node** head);
 // Remove and return the top value of the stack
 int pop(node** head);
 
-// 
+// Destroy stack freeing all memory
 void destroy(node** head);
 
 #endif // STACK_H_ 
