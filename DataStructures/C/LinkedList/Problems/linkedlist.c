@@ -80,6 +80,15 @@ int length(node** head) {
     return count;
 }
 
+// Print linked list elements
+void print(node** head) {
+    node* current = *head;
+
+    while (current != NULL) {
+        printf("%i\n", current -> data);
+        current = current -> next;
+    }
+}
 
 // Destroy linked list freeing all allocated memory
 void destroy(node** head) {

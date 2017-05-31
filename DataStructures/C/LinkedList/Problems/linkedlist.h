@@ -32,4 +32,7 @@ void destroy(node** head);
 // Return length of linked list
 int length(node** head);
 
+// Print linked list elements
+void print(node** head);
+
 #endif // LINKEDLIST_H_
