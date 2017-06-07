@@ -18,6 +18,7 @@ typedef struct Node{
     struct Node* next;
 } node;
 
+// Define Queue struct consisting of head node and tail node
 typedef struct Queue {
     node* head;
     node* tail;
@@ -26,19 +27,19 @@ typedef struct Queue {
 // Create empty queue
 queue* create();
 
-// Enqueue
+// Add item to end of queue
 void enqueue(queue** queue, int val);
 
-// Dequeue
+// Remove item from front of queue
 int dequeue(queue** queue);
 
-// Print queue
+// Print elements of queue
 void print(queue** queue);
 
-// Length of queue
+// Return length of queue
 int length(queue** queue);
 
-// Destroy
+// Destroy and free memory of all queue elements
 void destroy(queue** queue);
 
 #endif /* QUEUE_H */
