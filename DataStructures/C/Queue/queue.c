@@ -8,7 +8,10 @@
 
 #include "queue.h"
 
+// Create queue 
 queue* create() {
+
+    // Allocate memory for queue
     queue* queue = malloc(sizeof(queue));
     queue -> head = NULL;
     queue -> tail = NULL;
@@ -84,9 +87,9 @@ void destroy(queue** queue) {
         free(traversal);
         traversal = (*queue) -> head;
     }
-
-    (*queue) -> head = NULL;
-    (*queue) -> tail = NULL;
+    
+    free(*queue);
+    (*queue) = NULL;
 }
 
 int main(void) {
@@ -97,11 +100,16 @@ int main(void) {
 
     /*for (int i = 0; i < 10; i++) {
         printf("%i\n", dequeue(&test));
-    }
-*/    printf("%i\n", length(&test));
+    }*/
+
+    printf("%i\n", length(&test));
     destroy(&test);
 
-    printf("%i\n", test -> head -> next -> data);
+    for(int i = 0; i < 11; i++) {
+        enqueue(&test, i);
+    }
+
+    print(&test);
     /*printf("%i\n", length(&test));
     printf("%i\n", dequeue(&test));
     printf("%i\n", test -> head -> data);*/
