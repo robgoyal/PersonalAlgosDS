@@ -30,15 +30,15 @@ queue* create();
 void enqueue(queue** queue, int val);
 
 // Dequeue
-int dequeue();
+int dequeue(queue** queue);
 
 // Print queue
-void print();
+void print(queue** queue);
 
 // Length of queue
-int length();
+int length(queue** queue);
 
 // Destroy
-void destroy();
+void destroy(queue** queue);
 
 #endif /* QUEUE_H */
