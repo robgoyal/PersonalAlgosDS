@@ -53,8 +53,8 @@ void enqueue(queue** queue, int val) {
 int dequeue(queue** queue) {
 
     // Check if queue isn't empty
-    if (length <= 0) {
-        printf("No values in queue");
+    if (length(queue) <= 0) {
+        printf("Error: Empty Queue!\n");
         exit(1);
     }
 

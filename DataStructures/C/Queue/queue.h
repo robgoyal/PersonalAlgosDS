@@ -1,6 +1,6 @@
 /* Name: Queue.h
    Author: Robin Goyal
-   Last-Modified: June 5, 2017
+   Last-Modified: June 7, 2017
    Purpose: Define queue struct and protoype functions.
             Implemented on top of linked list
 */
