@@ -1,6 +1,6 @@
 # Name: LList.py
 # Author: Robin Goyal
-# Last-Modified: January 5, 2018
+# Last-Modified: January 7, 2018
 # Purpose: Implement ADT for Linked List
 
 from Node import Node
@@ -14,10 +14,10 @@ class LinkedList:
 
     def add(self, item):
         '''
-        item -> any: data to add to the list in the form of a Node
+        item -> any type: data to add to the list in the form of a Node
         return -> nothing
 
-        Assumption -> Add Node to the front of the linked list
+        Add item to the front of the list
         '''
 
         if self.head is None:
@@ -30,10 +30,12 @@ class LinkedList:
 
     def remove(self, item):
         '''
-        item -> any: item to remove from Linked List
+        item -> any type: item to remove from list
         return -> nothing
 
         Assumption -> Item exists in list
+
+        Remove item from the list
         '''
 
         traversal = self.head
@@ -58,6 +60,13 @@ class LinkedList:
         self.length -= 1
 
     def search(self, item):
+        '''
+        item -> any type: item to look for in the list
+        return -> boolean
+
+        Return True or False whether item is in list
+        '''
+
         traversal = self.head
 
         while (traversal is not None):
@@ -76,10 +85,20 @@ class LinkedList:
         return self.length == 0
 
     def size(self):
+        '''
+        return -> int: length of list
+
+        Return the length of the list
+        '''
 
         return self.length
 
     def append(self, item):
+        '''
+        item -> any type
+
+        Add item to end of list
+        '''
 
         temp = Node(item)
 
@@ -96,9 +115,32 @@ class LinkedList:
 
         self.length += 1
 
+    def index(self, item):
+        '''
+        item -> data: item to look for in list
+        return -> int: position of item in list
+
+        Assumption -> item is in list
+
+        Return the index of the item in the list
+        '''
+
+        traversal = self.head
+        index = 0
+
+        # Loop through list until item is found
+        # Works off of the assumption that the item is in the list
+        while (traversal.getData() != item):
+            index += 1
+            traversal = traversal.getNext()
+
+        return index
+
     def __str__(self):
         '''
-        return -> str: prints the data of the linked list
+        return -> str
+
+        Prints the data of the linked list
         '''
 
         traversal = self.head
@@ -116,25 +158,3 @@ class LinkedList:
             traversal = traversal.getNext()
 
         return list_data
-
-
-if __name__ == "__main__":
-    test = LinkedList()
-    test.add(5)
-    test.add(7)
-    test.add("Hello")
-    test.add(8)
-    test.add(5.5)
-    test.add(True)
-    test.append(16)
-
-    test2 = LinkedList()
-    test2.append(5)
-    print(test2)
-    # print(test)
-    # test.remove(8)
-    # print(test)
-    # test.remove(5)
-    # print(test)
-
-    print(test.size())
