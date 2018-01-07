@@ -10,6 +10,7 @@ class LinkedList:
 
     def __init__(self):
         self.head = None
+        self.length = 0
 
     def add(self, item):
         '''
@@ -24,6 +25,8 @@ class LinkedList:
         else:
             temp = Node(item, self.head)
             self.head = temp
+
+        self.length += 1
 
     def remove(self, item):
         '''
@@ -52,12 +55,46 @@ class LinkedList:
             else:
                 traversal.setNext(traversal.getNext().getNext())
 
+        self.length -= 1
+
+    def search(self, item):
+        traversal = self.head
+
+        while (traversal is not None):
+            if traversal.getData() == item:
+                return True
+
+            traversal = traversal.getNext()
+
+        return False
+
     def isEmpty(self):
         '''
-        return -> bool: Check if head is None
+        return -> bool: Check if length is 0
         '''
 
-        return self.head is None
+        return self.length == 0
+
+    def size(self):
+
+        return self.length
+
+    def append(self, item):
+
+        temp = Node(item)
+
+        if self.head is None:
+            self.head = temp
+
+        else:
+            traversal = self.head
+
+            while (traversal.getNext() is not None):
+                traversal = traversal.getNext()
+
+            traversal.setNext(temp)
+
+        self.length += 1
 
     def __str__(self):
         '''
@@ -89,11 +126,15 @@ if __name__ == "__main__":
     test.add(8)
     test.add(5.5)
     test.add(True)
+    test.append(16)
 
-    print(test)
-    test.remove(True)
-    print(test)
-    test.remove(8)
-    print(test)
-    test.remove(5)
-    print(test)
+    test2 = LinkedList()
+    test2.append(5)
+    print(test2)
+    # print(test)
+    # test.remove(8)
+    # print(test)
+    # test.remove(5)
+    # print(test)
+
+    print(test.size())
