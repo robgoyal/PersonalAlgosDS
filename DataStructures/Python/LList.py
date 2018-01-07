@@ -40,16 +40,17 @@ class LinkedList:
             self.head = traversal.getNext()
 
         # Traverse through list until the next node contains item
-        while traversal.getNext().getData() != item:
-            traversal = traversal.getNext()
-
-        # Check if item is at end of list
-        if traversal.getNext().getNext() is None:
-            traversal.setNext(None)
-
-        # Item is in the middle of the list
         else:
-            traversal.setNext(traversal.getNext().getNext())
+            while traversal.getNext().getData() != item:
+                traversal = traversal.getNext()
+
+            # Check if item is at end of list
+            if traversal.getNext().getNext() is None:
+                traversal.setNext(None)
+
+            # Item is in the middle of the list
+            else:
+                traversal.setNext(traversal.getNext().getNext())
 
     def isEmpty(self):
         '''
@@ -89,6 +90,10 @@ if __name__ == "__main__":
     test.add(5.5)
     test.add(True)
 
-    # Error at Line 43 with this test
+    print(test)
     test.remove(True)
+    print(test)
+    test.remove(8)
+    print(test)
+    test.remove(5)
     print(test)
