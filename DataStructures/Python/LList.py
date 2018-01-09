@@ -1,6 +1,6 @@
 # Name: LList.py
 # Author: Robin Goyal
-# Last-Modified: January 7, 2018
+# Last-Modified: January 9, 2018
 # Purpose: Implement ADT for Linked List
 
 from Node import Node
@@ -20,7 +20,7 @@ class LinkedList:
         Add item to the front of the list
         '''
 
-        if self.head is None:
+        if self.getLength() == 0:
             self.head = Node(item)
         else:
             temp = Node(item, self.head)
@@ -91,7 +91,7 @@ class LinkedList:
         Return the length of the list
         '''
 
-        return self.length
+        return self.getLength()
 
     def append(self, item):
         '''
@@ -102,15 +102,18 @@ class LinkedList:
 
         temp = Node(item)
 
-        if self.head is None:
+        # Point head to new node if list is empty
+        if self.getLength() == 0:
             self.head = temp
 
         else:
             traversal = self.head
 
+            # Traverse through list until reaching final node
             while (traversal.getNext() is not None):
                 traversal = traversal.getNext()
 
+            # Set the next pointer of the final node to the new node
             traversal.setNext(temp)
 
         self.length += 1
@@ -135,6 +138,80 @@ class LinkedList:
             traversal = traversal.getNext()
 
         return index
+
+    def insert(self, pos, item):
+        '''
+        item -> any type
+        pos -> int: position to insert item at
+
+        Assumption -> pos < self.length
+                      item is not in the list
+                      pos is zero-indexed
+        '''
+
+        # Insert element at front of list
+        if pos == 0:
+            self.add(item)
+
+        else:
+            traversal = self.head
+
+            # Traverse through list until reaching desired position
+            while (pos > 1):
+                traversal = traversal.getNext()
+                pos -= 1
+
+            # Insert node at desired position
+            temp = Node(item, traversal.getNext())
+            traversal.setNext(temp)
+
+    def pop(self, pos=None):
+        '''
+        pos -> int: index of element, None if no argument is passed
+        return -> any type: last item in list
+
+        Assumption -> pos is a valid integer between 0 and length of list - 1
+        Remove and return the final item in the list
+        '''
+
+        traversal = self.head
+
+        # Remove first element if argument is 0th index or length of list is 1
+        if self.getLength() == 1 or pos == 0:
+            data = traversal.getData()
+            self.head = traversal.getNext()
+
+        # Remove last element if no argument is passed or argument is the final index
+        elif pos is None or pos == self.getLength() - 1:
+            while (traversal.getNext().getNext() is not None):
+                traversal = traversal.getNext()
+
+            data = traversal.getNext().getData()
+            traversal.setNext(None)
+
+        # Remove element by traversing to desired index and remove element
+        else:
+            while (pos > 1):
+                traversal = traversal.getNext()
+                pos -= 1
+
+            data = traversal.getNext().getData()
+            traversal.setNext(traversal.getNext().getNext())
+
+        # Decrement length of list
+        self.length -= 1
+
+        # Return data of removed node
+        return data
+
+    def getLength(self):
+        '''
+        return -> int
+
+        Returns the length of the list
+        '''
+
+        return self.length
 
     def __str__(self):
         '''
