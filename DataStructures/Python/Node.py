@@ -7,39 +7,39 @@
 class Node:
 
     # Provide default value of None if no next Node is provided
-    def __init__(self, data, next=None):
-        self.data = data
-        self.next = next
+    def __init__(self, data, next_node=None):
+        self._data = data
+        self._next = next_node
 
     # Getters
-    def getData(self):
+    def get_data(self):
         '''
         return -> any: data of Node
         '''
 
-        return self.data
+        return self._data
 
-    def getNext(self):
+    def get_next(self):
         '''
         return -> Node: Returns next Node if it exists, otherwise None
         '''
 
-        return self.next
+        return self._next
 
     # Setters
-    def setData(self, data):
+    def set_data(self, data):
         '''
         data -> any: data to modify of current Node
         '''
 
-        self.data = data
+        self._data = data
 
-    def setNext(self, next):
+    def set_next(self, next_node):
         '''
         next -> Node: modify pointer to new next Node
         '''
 
-        self.next = next
+        self._next = next_node
 
     def __repr__(self):
-        return "Node({}, {})".format(self.data, self.next)
+        return "Node({}, {})".format(self._data, self._next)
