@@ -1,6 +1,6 @@
 # Name: Stack.py
 # Author: Robin Goyal
-# Last-Modified: January 12, 2018
+# Last-Modified: January 15, 2018
 # Purpose: Implement ADT for Stack by inheriting from Linked List
 
 from LList import LinkedList
@@ -36,9 +36,9 @@ class Stack(LinkedList):
         the same as the add() method defined in the LinkedList class.
 
         Examples:
-            - add(5): 2 -> 3 -> True ===> 5 -> 2 -> 3 -> True
-            - add(-5.6): Empty Stack ===> -5.6
-            - add(2.3): 4 ===> 2.3 -> 4
+            - push(5): 2 -> 3 -> True ===> 5 -> 2 -> 3 -> True
+            - push(-5.6): Empty Stack ===> -5.6
+            - push(2.3): 4 ===> 2.3 -> 4
         '''
 
         LinkedList.add(self, item)
@@ -93,7 +93,7 @@ class Stack(LinkedList):
         return -> int
 
         Returns an integer representing the length of the stack.
-        The functionality is same as the isEmpty() method of the
+        The functionality is same as the size() method of the
         linked list.
 
         Examples:
