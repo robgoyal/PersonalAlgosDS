@@ -84,6 +84,10 @@ class Queue(LinkedList):
         Returns an integer representing the length of the queue.
         The functionality is the same as the size() method of the
         linked list.
+
+        Examples:
+            - size(): Empty Queue ===> 0
+            - size(): 2 -> 3 -> 4 ===> 3
         '''
 
         return LinkedList.size(self)
