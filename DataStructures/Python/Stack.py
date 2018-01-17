@@ -15,6 +15,10 @@ class Stack(LinkedList):
     Attributes:
         head: A pointer to the first node in the stack
         _length: An integer representing the number of current items in the stack
+
+    Inherited Methods in Stack ADT from Linked List:
+        isEmpty: Returns a boolean indicating if the Stack is empty or not
+        size: Returns the number of items in the Stack
     '''
 
     def __init__(self):
@@ -72,34 +76,3 @@ class Stack(LinkedList):
         '''
 
         return self.head.get_data()
-
-    def isEmpty(self):
-        '''
-        return -> bool
-
-        Returns a boolean indicating whether the stack is
-        empty. The functionality is same as the isEmpty() method
-        of the linked list.
-
-        Examples:
-            - isEmpty(): Empty Stack ===> True
-            - isEmpty(): 2 -> 3 -> 5.5 ===> False
-        '''
-
-        return LinkedList.isEmpty(self)
-
-    def size(self):
-        '''
-        return -> int
-
-        Returns an integer representing the length of the stack.
-        The functionality is same as the size() method of the
-        linked list.
-
-        Examples:
-            - size(): Empty Stack ===> 0
-            - size(): 2 ===> 1
-            - size(): 6 -> 5 -> 3 ===> 3
-        '''
-
-        return LinkedList.size(self)

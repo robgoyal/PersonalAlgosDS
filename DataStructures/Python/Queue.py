@@ -17,6 +17,10 @@ class Queue(LinkedList):
     Attributes:
         head: A pointer to the first node of the queue
         _length: An integer representing the number of current items in the queue
+
+    Inherited methods in Queue ADT from Linked List:
+        isEmpty: Returns a boolean indicating if the Queue is empty or not
+        sie: Returns the number of items in the Queue
     '''
 
     def __init__(self):
@@ -61,33 +65,3 @@ class Queue(LinkedList):
         '''
 
         return LinkedList.pop(self, 0)
-
-    def isEmpty(self):
-        '''
-        return -> bool
-
-        Returns a boolean indicating whether the queue is empty.
-        The functionality is same as the isEmpty() method of the
-        linked list.
-
-        Examples:
-            - isEmpty(): Empty Queue ===> True
-            - isEmpty(): 2 -> 15 ===> False
-        '''
-
-        return LinkedList.isEmpty(self)
-
-    def size(self):
-        '''
-        return -> int
-
-        Returns an integer representing the length of the queue.
-        The functionality is the same as the size() method of the
-        linked list.
-
-        Examples:
-            - size(): Empty Queue ===> 0
-            - size(): 2 -> 3 -> 4 ===> 3
-        '''
-
-        return LinkedList.size(self)
