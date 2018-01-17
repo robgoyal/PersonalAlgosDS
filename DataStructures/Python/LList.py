@@ -104,15 +104,15 @@ class LinkedList:
 
         return False
 
-    def isEmpty(self):
+    def is_empty(self):
         '''
         return -> bool: Check if _length is 0
 
         Check whether the _length of the list is 0.
 
         Examples:
-            - isEmpty(): 5 -> 2 ===> False
-            - isEmpty(): Empty List ===> True
+            - is_empty(): 5 -> 2 ===> False
+            - is_empty(): Empty List ===> True
         '''
 
         return self.get_length() == 0

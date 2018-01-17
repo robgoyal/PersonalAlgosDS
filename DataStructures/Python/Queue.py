@@ -19,8 +19,8 @@ class Queue(LinkedList):
         _length: An integer representing the number of current items in the queue
 
     Inherited methods in Queue ADT from Linked List:
-        isEmpty: Returns a boolean indicating if the Queue is empty or not
-        sie: Returns the number of items in the Queue
+        is_empty: Returns a boolean indicating if the Queue is empty or not
+        size: Returns the number of items in the Queue
     '''
 
     def __init__(self):

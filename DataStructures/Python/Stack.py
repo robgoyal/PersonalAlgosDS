@@ -17,7 +17,7 @@ class Stack(LinkedList):
         _length: An integer representing the number of current items in the stack
 
     Inherited Methods in Stack ADT from Linked List:
-        isEmpty: Returns a boolean indicating if the Stack is empty or not
+        is_empty: Returns a boolean indicating if the Stack is empty or not
         size: Returns the number of items in the Stack
     '''
 
